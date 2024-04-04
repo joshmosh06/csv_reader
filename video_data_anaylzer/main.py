@@ -7,6 +7,7 @@ import os
 from video import *
 import csv
 import re
+import matplotlib.pyplot as plt
 
 video_data_array = [] #used to store all data read from CSD file
 read_row = 0
@@ -39,8 +40,9 @@ def read_video_data(row, line_num):
                 current_video_data.published_date = col;
             case 6:
                 #calculate duration
-                duration_list = re.split(":", col)
+                duration_list = re.split(":", col) # 3:34 ["3", "34"]
                 duration = int(duration_list[0]) * 60 + int(duration_list[1])
+                current_video_data.minutes = int(duration_list[0])
                 current_video_data.duration = duration; #in seconds
             case 7:
                 pass
@@ -67,6 +69,21 @@ csv_file.close()
 for video_data in video_data_array:
     print(vars(video_data))
 
-#Step 4 print to file
+#Step 4 Create plot
+#create x list
+# x_list = []
+# y_list = []
+
+for video_data in video_data_array:
+    # x_list.append(video_data.duration)
+    # y_list.append(video_data.likes_count)
+    plt.scatter(video_data.comments_count,video_data.view_count, label=video_data.title)
 
 
+plt.xlabel("Commnet Count")
+plt.ylabel("View count")
+
+plt.title("test_graph")
+   
+plt.legend()
+plt.show()

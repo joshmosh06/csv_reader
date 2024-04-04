@@ -1,5 +1,5 @@
 class video_data:
-    def __init__(self, link = "", title ="", view_count = 0, likes_count=0, comments_count=0, published_date="", duration=0, author=""):
+    def __init__(self, link = "", title ="", view_count = 0, likes_count=0, comments_count=0, published_date="", duration=0, author="", minutes=0):
         self.link = link;
         self.title = title;
         self.view_count = view_count;
@@ -8,3 +8,4 @@ class video_data:
         self.published_date = published_date;
         self.duration = duration;
         self.author = author;
+        self.minutes = minutes;
